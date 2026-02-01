@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Détails du Train</title>
+    <style>
+        body { font-family: sans-serif; margin: 20px; }
+        .info { margin-bottom: 10px; }
+        label { font-weight: bold; }
+    </style>
+</head>
+<body>
+<h1>Détails du Train</h1>
+
+<div class="info">
+    <label>Matricule :</label>
+    <span th:text="${train.matricule}">TGV-000</span>
+</div>
+
+<div class="info">
+    <label>Type :</label>
+    <span th:text="${train.type}">TER/TGV</span>
+</div>
+
+<div class="info">
+    <label>Vitesse Maximum :</label>
+    <span th:text="${train.vitesseMax}">0</span> km/h
+</div>
+
+<hr>
+<a href="/ihm/trains">Retour à la liste</a>
+</body>
+</html>
