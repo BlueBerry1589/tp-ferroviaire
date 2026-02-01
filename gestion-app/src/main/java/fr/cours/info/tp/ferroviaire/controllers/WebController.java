@@ -48,6 +48,21 @@ public class WebController {
         return "redirect:/trains";
     }
 
+    @GetMapping("/trains/edit")
+    public String editTrainForm(@RequestParam String matricule, Model model) {
+        model.addAttribute("train", trainService.rechercher(matricule));
+        return "train-edit";
+    }
+
+    @PostMapping("/trains/edit")
+    public String editTrain(@RequestParam String ancienMatricule,
+                            @RequestParam String matricule,
+                            @RequestParam String type,
+                            @RequestParam int vitesseMax) {
+        trainService.modifier(ancienMatricule, matricule, type, vitesseMax);
+        return "redirect:/trains";
+    }
+
     @GetMapping("/gares")
     public String gares(Model model) {
         model.addAttribute("gares", gareService.listerToutes());
@@ -69,6 +84,20 @@ public class WebController {
     public String addGare(@RequestParam String nom,
                           @RequestParam int nombreQuais) {
         gareService.creer(nom, nombreQuais);
+        return "redirect:/gares";
+    }
+
+    @GetMapping("/gares/edit")
+    public String editGareForm(@RequestParam String nom, Model model) {
+        model.addAttribute("gare", gareService.rechercher(nom));
+        return "gare-edit";
+    }
+
+    @PostMapping("/gares/edit")
+    public String editGare(@RequestParam String ancienNom,
+                           @RequestParam String nom,
+                           @RequestParam int nombreQuais) {
+        gareService.modifier(ancienNom, nom, nombreQuais);
         return "redirect:/gares";
     }
 }

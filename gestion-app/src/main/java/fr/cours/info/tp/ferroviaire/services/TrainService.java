@@ -46,4 +46,15 @@ public class TrainService {
     public Iterable<TrainDAO> listerTous() {
         return repository.findAll();
     }
+
+    public TrainDAO modifier(String ancienMatricule, String matricule, String type, int vitesseMax) {
+        TrainDAO train = repository.findByMatricule(ancienMatricule);
+        if (train != null) {
+            train.setMatricule(matricule);
+            train.setType(type);
+            train.setVitesseMax(vitesseMax);
+            return repository.save(train);
+        }
+        return null;
+    }
 }

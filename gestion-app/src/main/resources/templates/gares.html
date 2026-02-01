@@ -18,6 +18,8 @@
         .quais { background: #27ae60; color: white; padding: 5px 12px; border-radius: 50%; font-weight: bold; }
         .btn { display: inline-block; background: #27ae60; color: white; padding: 8px 15px; border-radius: 5px; text-decoration: none; font-size: 0.9em; }
         .btn:hover { background: #2ecc71; }
+        .btn-edit { display: inline-block; background: #f39c12; color: white; padding: 8px 15px; border-radius: 5px; text-decoration: none; font-size: 0.9em; margin-left: 5px; }
+        .btn-edit:hover { background: #e67e22; }
         .btn-add { display: inline-block; background: #1e3c72; color: white; padding: 12px 20px; border-radius: 8px; text-decoration: none; font-weight: 500; }
         .btn-add:hover { background: #2a5298; }
     </style>
@@ -45,6 +47,7 @@
                     <td><span class="quais" th:text="${gare.nombreQuais}"></span></td>
                     <td>
                         <a th:href="@{/gares/view(nom=${gare.nom})}" class="btn">Détails</a>
+                        <a th:href="@{/gares/edit(nom=${gare.nom})}" class="btn-edit">Modifier</a>
                     </td>
                 </tr>
             </tbody>

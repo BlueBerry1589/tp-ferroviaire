@@ -42,4 +42,14 @@ public class GareService {
     public Iterable<GareDAO> listerToutes() {
         return repository.findAll();
     }
+
+    public GareDAO modifier(String nom, String nouveauNom, int nombreQuais) {
+        GareDAO gare = repository.findByNom(nom);
+        if (gare != null) {
+            gare.setNom(nouveauNom);
+            gare.setNombreQuais(nombreQuais);
+            return repository.save(gare);
+        }
+        return null;
+    }
 }

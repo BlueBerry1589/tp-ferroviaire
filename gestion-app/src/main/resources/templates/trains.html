@@ -19,6 +19,8 @@
         .type-ter { background: #3498db; color: white; padding: 5px 10px; border-radius: 15px; font-size: 0.8em; }
         .btn { display: inline-block; background: #1e3c72; color: white; padding: 8px 15px; border-radius: 5px; text-decoration: none; font-size: 0.9em; }
         .btn:hover { background: #2a5298; }
+        .btn-edit { display: inline-block; background: #f39c12; color: white; padding: 8px 15px; border-radius: 5px; text-decoration: none; font-size: 0.9em; margin-left: 5px; }
+        .btn-edit:hover { background: #e67e22; }
         .btn-add { display: inline-block; background: #27ae60; color: white; padding: 12px 20px; border-radius: 8px; text-decoration: none; font-weight: 500; }
         .btn-add:hover { background: #2ecc71; }
     </style>
@@ -51,6 +53,7 @@
                     <td th:text="${train.vitesseMax} + ' km/h'"></td>
                     <td>
                         <a th:href="@{/trains/view(matricule=${train.matricule})}" class="btn">Détails</a>
+                        <a th:href="@{/trains/edit(matricule=${train.matricule})}" class="btn-edit">Modifier</a>
                     </td>
                 </tr>
             </tbody>
