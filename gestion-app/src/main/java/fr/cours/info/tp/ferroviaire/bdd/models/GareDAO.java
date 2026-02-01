@@ -1,18 +1,23 @@
 package fr.cours.info.tp.ferroviaire.bdd.models;
 
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.Table;
 
-@Entity(name = "gare")
+@Entity
+@Table(name = "gare")
 public class GareDAO {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     
     private String nom;
+    
+    @Column(name = "nombre_quais")
     private int nombreQuais;
 
     public GareDAO() {
