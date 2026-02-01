@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Liste des Trains</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background: #f5f5f5; min-height: 100vh; }
+        .container { max-width: 1200px; margin: 0 auto; padding: 40px 20px; }
+        h1 { color: #1e3c72; text-align: center; margin-bottom: 30px; }
+        .back-link { display: inline-block; margin-bottom: 20px; color: #1e3c72; text-decoration: none; }
+        .back-link:hover { text-decoration: underline; }
+        table { width: 100%; border-collapse: collapse; background: white; border-radius: 10px; overflow: hidden; box-shadow: 0 5px 15px rgba(0,0,0,0.1); }
+        th { background: #1e3c72; color: white; padding: 15px; text-align: left; }
+        td { padding: 15px; border-bottom: 1px solid #eee; }
+        tr:hover { background: #f9f9f9; }
+        .type-tgv { background: #e74c3c; color: white; padding: 5px 10px; border-radius: 15px; font-size: 0.8em; }
+        .type-ter { background: #3498db; color: white; padding: 5px 10px; border-radius: 15px; font-size: 0.8em; }
+        .btn { display: inline-block; background: #1e3c72; color: white; padding: 8px 15px; border-radius: 5px; text-decoration: none; font-size: 0.9em; }
+        .btn:hover { background: #2a5298; }
+        .btn-add { display: inline-block; background: #27ae60; color: white; padding: 12px 20px; border-radius: 8px; text-decoration: none; font-weight: 500; }
+        .btn-add:hover { background: #2ecc71; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <a href="/" class="back-link">← Retour à l'accueil</a>
+        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 30px;">
+            <h1 style="margin-bottom: 0;">Liste des Trains</h1>
+            <a href="/trains/add" class="btn-add">+ Ajouter un train</a>
+        </div>
+        <table>
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Matricule</th>
+                    <th>Type</th>
+                    <th>Vitesse Max</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr th:each="train : ${trains}">
+                    <td th:text="${train.id}"></td>
+                    <td th:text="${train.matricule}"></td>
+                    <td>
+                        <span th:if="${train.type == 'TGV'}" class="type-tgv" th:text="${train.type}"></span>
+                        <span th:if="${train.type != 'TGV'}" class="type-ter" th:text="${train.type}"></span>
+                    </td>
+                    <td th:text="${train.vitesseMax} + ' km/h'"></td>
+                    <td>
+                        <a th:href="@{/trains/view(matricule=${train.matricule})}" class="btn">Détails</a>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</body>
+</html>

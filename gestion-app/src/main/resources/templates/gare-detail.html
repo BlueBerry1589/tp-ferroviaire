@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Détail de la Gare</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background: #f5f5f5; min-height: 100vh; }
+        .container { max-width: 800px; margin: 0 auto; padding: 40px 20px; }
+        .back-link { display: inline-block; margin-bottom: 20px; color: #27ae60; text-decoration: none; }
+        .back-link:hover { text-decoration: underline; }
+        .card { background: white; border-radius: 15px; padding: 40px; box-shadow: 0 10px 30px rgba(0,0,0,0.1); }
+        h1 { color: #27ae60; margin-bottom: 30px; display: flex; align-items: center; gap: 15px; }
+        .info-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px; }
+        .info-item { background: #f9f9f9; padding: 20px; border-radius: 10px; }
+        .info-item label { color: #666; font-size: 0.9em; display: block; margin-bottom: 5px; }
+        .info-item span { color: #27ae60; font-size: 1.5em; font-weight: bold; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <a href="/gares" class="back-link">← Retour à la liste</a>
+        <div class="card" th:if="${gare != null}">
+            <h1>Détail de la Gare <span th:text="${gare.nom}"></span></h1>
+            <div class="info-grid">
+                <div class="info-item">
+                    <label>ID</label>
+                    <span th:text="${gare.id}"></span>
+                </div>
+                <div class="info-item">
+                    <label>Nom</label>
+                    <span th:text="${gare.nom}"></span>
+                </div>
+                <div class="info-item">
+                    <label>Nombre de Quais</label>
+                    <span th:text="${gare.nombreQuais}"></span>
+                </div>
+            </div>
+        </div>
+        <div class="card" th:if="${gare == null}">
+            <h1>Gare non trouvée</h1>
+            <p>La gare demandée n'existe pas dans la base de données.</p>
+        </div>
+    </div>
+</body>
+</html>

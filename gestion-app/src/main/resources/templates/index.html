@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gestion Ferroviaire</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background: linear-gradient(135deg, #1e3c72, #2a5298); min-height: 100vh; }
+        .container { max-width: 1200px; margin: 0 auto; padding: 40px 20px; }
+        h1 { color: white; text-align: center; font-size: 2.5em; margin-bottom: 40px; text-shadow: 2px 2px 4px rgba(0,0,0,0.3); }
+        .cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; }
+        .card { background: white; border-radius: 15px; padding: 30px; text-align: center; box-shadow: 0 10px 30px rgba(0,0,0,0.2); transition: transform 0.3s; }
+        .card:hover { transform: translateY(-10px); }
+        .card h2 { color: #1e3c72; margin-bottom: 15px; }
+        .card p { color: #666; margin-bottom: 20px; }
+        .card a { display: inline-block; background: #1e3c72; color: white; padding: 12px 30px; border-radius: 25px; text-decoration: none; transition: background 0.3s; }
+        .card a:hover { background: #2a5298; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Gestion du Réseau Ferroviaire</h1>
+        <div class="cards">
+            <div class="card">
+                <h2>Trains</h2>
+                <p>Consulter et gérer les trains du réseau</p>
+                <a href="/trains">Voir les trains</a>
+            </div>
+            <div class="card">
+                <h2>Gares</h2>
+                <p>Consulter et gérer les gares du réseau</p>
+                <a href="/gares">Voir les gares</a>
+            </div>
+            <div class="card">
+                <h2>Base de données</h2>
+                <p>Accéder à la console H2</p>
+                <a href="/h2">Console H2</a>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

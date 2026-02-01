@@ -16,8 +16,8 @@ public class TrainController {
     public TrainDAO consulterTrain(@RequestParam(value = "matricule", required = true) String matricule) {
         TrainDAO train = service.rechercher(matricule);
         if (train == null) {
-            // Si le train n'existe pas, on le crée
-            train = service.creer(matricule);
+            // Si le train n'existe pas, on le crée avec des valeurs par défaut
+            train = service.creer(matricule, "TER", 160);
         }
         return train;
     }
@@ -31,7 +31,6 @@ public class TrainController {
     public TrainDAO creerTrain(@RequestParam(value = "matricule") String matricule,
                                @RequestParam(value = "type", required = false, defaultValue = "TER") String type,
                                @RequestParam(value = "vitesseMax", required = false, defaultValue = "160") int vitesseMax) {
-        TrainDAO train = new TrainDAO(matricule, type, vitesseMax);
-        return service.creer(matricule);
+        return service.creer(matricule, type, vitesseMax);
     }
 }

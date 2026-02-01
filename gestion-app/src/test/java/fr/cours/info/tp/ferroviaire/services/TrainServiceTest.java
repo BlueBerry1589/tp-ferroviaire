@@ -26,17 +26,21 @@ class TrainServiceTest {
     }
 
     @Test
-    void creer_matricule_ok() {
+    void creer_train_ok() {
         // Arrange
         TrainDAO trainMock = new TrainDAO();
         trainMock.setMatricule("8921");
+        trainMock.setType("TGV");
+        trainMock.setVitesseMax(320);
         when(repository.save(any(TrainDAO.class))).thenReturn(trainMock);
 
         // Act
-        TrainDAO train = service.creer("8921");
+        TrainDAO train = service.creer("8921", "TGV", 320);
 
         // Assert
         assertEquals("8921", train.getMatricule());
+        assertEquals("TGV", train.getType());
+        assertEquals(320, train.getVitesseMax());
     }
 
     @Test

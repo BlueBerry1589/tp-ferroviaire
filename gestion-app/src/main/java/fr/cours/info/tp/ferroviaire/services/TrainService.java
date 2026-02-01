@@ -16,13 +16,17 @@ public class TrainService {
     }
 
     /**
-     * Crée un nouveau train avec le matricule spécifié.
+     * Crée un nouveau train avec les informations spécifiées.
      * @param matricule le matricule du train
+     * @param type le type du train (TGV, TER, etc.)
+     * @param vitesseMax la vitesse maximale en km/h
      * @return le train créé
      */
-    public TrainDAO creer(String matricule) {
+    public TrainDAO creer(String matricule, String type, int vitesseMax) {
         TrainDAO train = new TrainDAO();
         train.setMatricule(matricule);
+        train.setType(type);
+        train.setVitesseMax(vitesseMax);
         return repository.save(train);
     }
 
