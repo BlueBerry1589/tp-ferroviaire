@@ -60,5 +60,6 @@ mvn spring-boot:run
 
 ## Auteurs
 
-BlueBerry1589(Bilal MARGHICH)
-Taha Rachedi
+
+-BlueBerry1589(Bilal MARGHICH)
+-Taha Rachedi
