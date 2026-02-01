@@ -21,6 +21,8 @@
         .btn:hover { background: #2a5298; }
         .btn-edit { display: inline-block; background: #f39c12; color: white; padding: 8px 15px; border-radius: 5px; text-decoration: none; font-size: 0.9em; margin-left: 5px; }
         .btn-edit:hover { background: #e67e22; }
+        .btn-delete { background: #e74c3c; color: white; padding: 8px 15px; border-radius: 5px; border: none; font-size: 0.9em; margin-left: 5px; cursor: pointer; }
+        .btn-delete:hover { background: #c0392b; }
         .btn-add { display: inline-block; background: #27ae60; color: white; padding: 12px 20px; border-radius: 8px; text-decoration: none; font-weight: 500; }
         .btn-add:hover { background: #2ecc71; }
     </style>
@@ -54,6 +56,10 @@
                     <td>
                         <a th:href="@{/trains/view(matricule=${train.matricule})}" class="btn">Détails</a>
                         <a th:href="@{/trains/edit(matricule=${train.matricule})}" class="btn-edit">Modifier</a>
+                        <form th:action="@{/trains/delete}" method="post" style="display:inline;">
+                            <input type="hidden" name="matricule" th:value="${train.matricule}">
+                            <button type="submit" class="btn-delete" onclick="return confirm('Supprimer ce train?')">Supprimer</button>
+                        </form>
                     </td>
                 </tr>
             </tbody>

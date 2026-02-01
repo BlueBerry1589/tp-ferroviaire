@@ -63,6 +63,12 @@ public class WebController {
         return "redirect:/trains";
     }
 
+    @PostMapping("/trains/delete")
+    public String deleteTrain(@RequestParam String matricule) {
+        trainService.supprimer(matricule);
+        return "redirect:/trains";
+    }
+
     @GetMapping("/gares")
     public String gares(Model model) {
         model.addAttribute("gares", gareService.listerToutes());
@@ -98,6 +104,12 @@ public class WebController {
                            @RequestParam String nom,
                            @RequestParam int nombreQuais) {
         gareService.modifier(ancienNom, nom, nombreQuais);
+        return "redirect:/gares";
+    }
+
+    @PostMapping("/gares/delete")
+    public String deleteGare(@RequestParam String nom) {
+        gareService.supprimer(nom);
         return "redirect:/gares";
     }
 }

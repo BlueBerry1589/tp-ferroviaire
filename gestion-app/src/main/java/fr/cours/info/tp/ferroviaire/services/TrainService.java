@@ -57,4 +57,11 @@ public class TrainService {
         }
         return null;
     }
+
+    public void supprimer(String matricule) {
+        TrainDAO train = repository.findByMatricule(matricule);
+        if (train != null) {
+            repository.delete(train);
+        }
+    }
 }

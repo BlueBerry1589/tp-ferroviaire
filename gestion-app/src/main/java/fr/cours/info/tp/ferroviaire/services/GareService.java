@@ -52,4 +52,11 @@ public class GareService {
         }
         return null;
     }
+
+    public void supprimer(String nom) {
+        GareDAO gare = repository.findByNom(nom);
+        if (gare != null) {
+            repository.delete(gare);
+        }
+    }
 }
