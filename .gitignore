@@ -1,0 +1,8 @@
+*.class
+target/
+.idea/
+.mvn/
+*.iml
+*.log
+repo_dist_git/
+cartographie-lib-collab/
